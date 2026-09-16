@@ -1,89 +1,115 @@
-# 🧭 Gezgin Günlüğü
+# Gezgin Günlüğü 🧭📸
 
-Akıllı seyahat notu, dijital albüm ve video kolaj asistanı. Seyahatin sırasında **fotoğraf/konum** ekle; uygulama bunlara **tarihi & kültürel derinlik** kazandırsın. Seyahat bitince tek dokunuşla **albüm/PDF mizanpaj planı** ve **sinematik video kolaj senaryosu** üret.
+> Akıllı seyahat günlüğü, rota ve mesafe planlayıcı, EXIF/GPS fotoğraflı mekan keşfi, harcama raporlama ve dijital albüm / PDF mizanpaj asistanı.
 
-Expo (React Native) ile yazılmıştır; iOS, Android ve web'de çalışır. Tüm veriler yalnızca cihazda (AsyncStorage) saklanır — sunucu yok.
-
----
-
-## ✨ Özellikler
-
-- **🧳 Çoklu seyahat** — Her seyahat kendi hazırlık listesi, durakları ve keşif günlüğüyle ayrı yönetilir.
-- **✅ Hazırlık checklist'i** — 10 maddelik hazır şablon + elle madde ekleme. Her madde `Bekliyor → Tamam → Kısmen → Gerek Yok` durumları arasında geçer (dokun: sıradaki; uzun bas: doğrudan seç/sil). İlerleme yüzdesi hesaplanır.
-- **🗺️ Güzergah & mesafe** — Duraklar ekle, seyahat aracını seç; duraklar arası **mesafe ve tahmini süre** araca göre otomatik hesaplanır (uçak kuş uçuşu; kara/ray araçları yol payıyla). Durakları sırala/sil.
-- **📍 Keşif ekleme** — Fotoğraf yükle (EXIF'ten tarih & GPS okunur) ve/veya mekan adı gir. Uygulama şablonlu bir kart üretir:
-  - Mekanın tam adı, şehir/ülke, keşif tarihi
-  - 🏛️ Tarihi ve kültürel özet
-  - 📚 Kaynakça & referanslar
-  - ✍️ Gezginin Notları (kişisel not alanı — elle doldurulur)
-- **📓 Kronolojik günlük** — Tüm keşifler tarih sırasına göre listelenir.
-- **📖 Albüm / Yayın Planı** — Kapak fikri, giriş sayfası, gün gün sayfa yerleşim şablonları ve çift-sayfa seyahat haritası taslağı. Metin olarak panoya kopyalanır.
-- **🎬 Video Kolaj Senaryosu** — Sahne sahne timeline: açılış, 3B harita fly-through geçişleri, mekan sahneleri, kapanış; her sahne için görsel/geçiş/alt yazı/dış ses/müzik notlarıyla. Araca göre müzik atmosferi önerilir. Metin olarak kopyalanır.
-
-## 🧠 Tarihi/Kültürel Özet Kaynağı (Ayarlar)
-
-İki mod desteklenir, Ayarlar'dan geçiş yapılır:
-
-1. **🗄️ Yerel arşiv (varsayılan)** — Çevrimdışı çalışır. Ayasofya, Kapadokya, Efes, Pamukkale, Göbeklitepe, Nemrut, Truva, Anıtkabir, Sümela, Eyfel Kulesi, Kolezyum, Akropolis gibi tanınmış yerler için hazır özet ve kaynakça sunar.
-2. **🤖 Canlı AI** — Arşivde olmayan yerler için OpenAI veya Anthropic (Claude) API'siyle gerçek AI özeti üretir. İnternet + API anahtarı gerekir; anahtar yalnızca cihazda saklanır. Her durumda önce yerel arşiv denenir.
-
-Arşivde bulunmayan ve AI kapalıysa, boş şablon üretilir ve özeti kullanıcı kendi yazabilir.
+Bu depo, bağımsızlaştırılmış ve Apple App Store ile Google Play Store yayın standartlarına göre yapılandırılmış modern **React Native / Expo** mobil projesidir.
 
 ---
 
-## 🚀 Çalıştırma
+## 📱 Proje ve Mağaza Kimlikleri
 
+| Alan | Değer |
+| :--- | :--- |
+| **Uygulama Adı** | Gezgin |
+| **Paket / Bundle ID** | `com.serkanadak.gezgingunlugu` |
+| **Kategori** | Seyahat & Yerel / Yaşam Tarzı |
+| **Hedef Platformlar** | iOS (App Store), Android (Google Play Store) |
+| **Mimari** | React Native / Expo Native Runtime (Target SDK 34+ / iOS 15+) |
+| **Gizlilik / KVKK** | Cihaz İçi Güvenli Depolama (AsyncStorage), Harici Sunucusuz |
+
+---
+
+## ✨ Öne Çıkan Özellikler
+
+- ✅ **Çoklu Seyahat & Hazırlık Kontrol Listesi (Checklist)**
+- ✅ **Güzergah Planlayıcı, Mesafe & Seyahat Süresi Hesaplama**
+- ✅ **EXIF/GPS Destekli Fotoğraf & Mekan Keşif Kartları**
+- ✅ **Harcama Takibi, Para Birimi Kırılımı ve Raporlama**
+- ✅ **Yazdırılabilir Seyahat Albümü & PDF Dışa Aktarma**
+
+---
+
+## 🚀 Hızlı Başlangıç (Geliştirme & Test)
+
+### 1. Ön Koşullar
+- Bilgisayarınızda **Node.js (v18+)** ve **Git** kurulu olmalıdır.
+- Mobil cihazınızda test etmek için **Expo Go** (App Store / Google Play üzerinden ücretsiz) uygulamasını indirin.
+
+### 2. Kurulum ve Çalıştırma
 ```bash
-cd gezgin-gunlugu
+# 1. Depoyu klonlayın
+git clone https://github.com/serkanadak/gezgin-gunlugu-mobile.git
+cd gezgin-gunlugu-mobile
+
+# 2. Bağımlılıkları yükleyin
 npm install
-npm run start      # Expo geliştirme sunucusu
-npm run web        # tarayıcıda
-npm run android    # Android
-npm run ios        # iOS
+
+# 3. Expo geliştirici sunucusunu başlatın
+npx expo start
 ```
 
-Uygulama görselleri (ikon/splash) koddan üretilir:
+Terminalde beliren **QR Kodu**:
+- **iPhone** için doğrudan Kamera uygulamasıyla okutun.
+- **Android** için **Expo Go** uygulamasını açıp "Scan QR code" ile okutun.
+
+---
+
+## 🏗️ Native Derleme ve Dağıtım (Store Releases)
+
+### A. EAS Build ile Bulutta APK / AAB / IPA Üretimi
+Uygulama doğrudan `eas.json` yapılandırmasına sahiptir:
 
 ```bash
-npm run gen:assets
+# EAS CLI kurulumu ve oturum açma
+npm install -g eas-cli
+eas login
+
+# Android Play Store için Production AAB Derleme:
+npx eas build --platform android --profile production
+
+# iOS App Store için Production IPA Derleme:
+npx eas build --platform ios --profile production
 ```
 
-Testler (saf mantık katmanı):
+### B. Yerel Native Projeleri Üretme (Prebuild)
+Dilerseniz React Native Xcode ve Android Studio projelerini yerel olarak dışa aktarabilirsiniz:
 
 ```bash
-npm test
+# Native android/ ve ios/ klasörlerini üretir:
+npx expo prebuild
+
+# Android Studio veya Xcode ile yerel çalıştırma:
+npx expo run:android
+npx expo run:ios
 ```
 
 ---
 
-## 🏗️ Mimari
+## 🛠️ Mağaza Otomasyonu (Fastlane & Keystore)
 
-```
-gezgin-gunlugu/
-├── App.js                     # SafeArea + JournalProvider + RootNavigator
-├── src/
-│   ├── theme.js               # Renk paleti (gece mavisi + altın)
-│   ├── navigation/
-│   │   └── RootNavigator.js   # Bottom tabs (Seyahatler/Ayarlar) + Stack
-│   ├── state/
-│   │   └── JournalContext.js  # Tüm durum: seyahatler, checklist, duraklar, keşifler, ayarlar (AsyncStorage)
-│   ├── components/
-│   │   └── common.js          # Card, PrimaryButton, ChipPicker, ConfirmModal, ProgressBar, ...
-│   ├── data/
-│   │   ├── vehicles.js        # Araçlar + hız + yol payı çarpanı
-│   │   ├── checklist.js       # Hazırlık şablonu + durum modeli + ilerleme
-│   │   └── places.js          # Yerel tarihi/kültürel yerler veri tabanı + eşleştirme
-│   ├── logic/
-│   │   ├── date.js            # Tarih biçimlendirme yardımcıları
-│   │   ├── geo.js             # Haversine mesafe + araç bazlı rota/süre
-│   │   ├── exif.js            # Fotoğraf EXIF → tarih & GPS
-│   │   ├── enrich.js          # Yerel arşiv → (opsiyonel) canlı AI → şablon
-│   │   ├── publish.js         # Albüm/PDF mizanpaj planı üreticisi
-│   │   └── video.js           # Video kolaj senaryosu üreticisi
-│   └── screens/               # 11 ekran
-└── scripts/gen-assets.js      # PNG ikon/splash üretici (bağımlılıksız)
-```
+- **iOS TestFlight Yayını:**
+  ```bash
+  fastlane ios beta
+  ```
+- **Google Play Internal Test Yayını:**
+  ```bash
+  fastlane android internal
+  ```
+- **Android İmzalaması İçin Keystore Üretimi:**
+  ```bash
+  ./scripts/generate_keystore.sh
+  ```
 
-## 🔒 Gizlilik
+---
 
-Seyahatler, fotoğraf referansları, notlar ve API anahtarı yalnızca cihazda saklanır. Uygulamanın kendi sunucusu yoktur. Canlı AI modunda yalnızca girdiğin mekan adı seçtiğin sağlayıcıya gönderilir.
+## 🔒 Gizlilik, KVKK ve Apple Standartları
+
+- **`PrivacyInfo.xcprivacy`**: Apple App Store zorunlu gizlilik manifestosu proje kök dizinindedir.
+- **`PRIVACY_POLICY.md`**: GDPR ve KVKK uyumlu gizlilik metni ve veri silme hakları (Apple Guideline 5.1.1v) mevcuttur.
+
+---
+
+## 📄 Lisans ve İletişim
+
+- **Geliştirici:** Serkan Adak
+- **İletişim:** sa.sosyal02@gmail.com
