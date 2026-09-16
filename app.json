@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "Gezgin Günlüğü",
+    "slug": "gezgin-gunlugu",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "gezgingunlugu",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0b1a2b"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Gezgin Günlüğü, seyahat keşiflerinize eklemek için fotoğraflarınıza erişir.",
+          "cameraPermission": "Gezgin Günlüğü, anı çekmek için kameranıza erişir."
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.serkanadak.gezgingunlugu",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.serkanadak.gezgingunlugu",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0b1a2b"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
+    },
+    "experiments": {
+      "baseUrl": "/Vocabulary/gezgin-gunlugu"
+    },
+    "extra": {
+      "description": "Fotoğraf/konumları tarihi & kültürel özetlerle zenginleştiren; hazırlık checklist'i, araç bazlı güzergah/mesafe hesabı, kronolojik günlük, albüm/PDF mizanpajı ve video kolaj senaryosu üreten seyahat asistanı."
+    }
+  }
+}
